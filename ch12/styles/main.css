@@ -1,0 +1,79 @@
+/* variables */
+:root {
+    --light: white;
+    --dark: black;
+}
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    width: 90%;
+    margin: auto;
+    padding: 1em;
+}
+h1, h2, h3 {
+    padding-bottom: .5em;
+}
+form, input, select, textarea {
+    width:100%;
+}
+input, select, button {
+    font-size: inherit;
+    padding: .25em;
+    margin-bottom: .5em;
+    border-radius: 5px;
+}
+label {
+    display: block;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+legend {
+    font-weight: bold;
+    padding: 0 .5em;
+}
+
+input:invalid, select:invalid {
+    border: 2px solid red;
+}
+input:valid, select:valid {
+    border: 2px solid green;
+}
+
+button {
+    width: auto;
+    cursor: pointer;
+}
+.btn {
+    padding: .4em 1.5em;
+    font-size: inherit;
+    border: none;
+    border-radius: 5px;
+    margin-right: .5em;
+}
+.btn-submit {
+    background-color: #2a7a2a;
+    color: white;
+}
+.btn-submit:hover {
+    background-color: #1d571d;
+}
+.btn-reset {
+    background-color: #888;
+    color: white;
+}
+.btn-reset:hover {
+    background-color: #666;
+}

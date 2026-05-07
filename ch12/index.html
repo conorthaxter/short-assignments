@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete a Form</title>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+<h1>Please complete our survey</h1>
+<form action="confirmation.html" method="post">
+
+	<fieldset>
+		<legend>Contact information</legend>
+		<label for="first_name">First name</label>
+		<input type="text" id="first_name" name="first_name"
+		       accesskey="f" required autofocus placeholder="First name">
+
+		<label for="last_name">Last name</label>
+		<input type="text" id="last_name" name="last_name"
+		       accesskey="l" required placeholder="Last name">
+
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email"
+		       accesskey="e" required placeholder="Email address">
+
+		<label for="phone">Phone</label>
+		<input type="tel" id="phone" name="phone"
+		       accesskey="p" required placeholder="Phone number">
+	</fieldset>
+
+	<fieldset>
+		<legend>Geographic information</legend>
+		<label for="city">City</label>
+		<input type="text" id="city" name="city" required placeholder="City">
+
+		<label for="state">State</label>
+		<input type="text" id="state" name="state" required
+		       pattern="[A-Za-z]{2}" placeholder="2-letter abbreviation (e.g. CA)">
+
+		<label for="zip">Zip code</label>
+		<input type="text" id="zip" name="zip" required
+		       pattern="\d{5}" placeholder="5-digit zip code (e.g. 93728)">
+	</fieldset>
+
+	<fieldset>
+		<legend>Source</legend>
+		<label for="source">How did you hear about us?</label>
+		<select id="source" name="source">
+			<option value="">Select one...</option>
+			<option value="internet">Internet search</option>
+			<option value="friend">Friend or family</option>
+			<option value="social">Social media</option>
+			<option value="radio">Radio</option>
+			<option value="tv">Television</option>
+			<option value="other">Other</option>
+		</select>
+
+		<label for="comments">Comments</label>
+		<textarea id="comments" name="comments" rows="4"
+		          placeholder="Enter any comments here..."></textarea>
+	</fieldset>
+
+	<button type="submit" class="btn btn-submit">Submit Survey</button>
+	<button type="reset" class="btn btn-reset">Clear Form</button>
+
+</form>
+</body>
+</html>
