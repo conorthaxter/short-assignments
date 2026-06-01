@@ -1,0 +1,87 @@
+/* ============================================================
+   Cascade layers fix (final solution for the specificity issue)
+
+   Specificity weights before fix:
+     h2            → 0-0-1
+     footer h2     → 0-0-2  (higher than media query h2, so media
+                              query couldn't override it on small screens)
+     @media h2     → 0-0-1
+
+   :where() fix (intermediate step):
+     :where(footer h2) → 0-0-0  (too low — breaks large-screen footer style)
+     :where(footer) h2 → 0-0-1  (matches h2, cascade order decides — works)
+
+   Cascade layers fix (final):
+     Unlayered styles always beat layered styles regardless of specificity,
+     so the unlayered media query h2 overrides the layered footer h2.
+   ============================================================ */
+
+@layer defaults, page;
+
+/* --- defaults layer: rules 1-4 --- */
+@layer defaults {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 100%;
+        width: 80%;
+        margin: auto;
+        border: 1px solid #ccc;
+    }
+
+    h2 {
+        font-size: 150%;
+        color: #222;
+        padding-bottom: .5em;
+    }
+
+    ul {
+        margin-left: 1.5em;
+        padding-bottom: 1em;
+    }
+}
+
+/* --- page layer: rules 5-6 --- */
+@layer page {
+    header {
+        background-color: #1a3a5c;
+        color: white;
+        padding: 1em;
+        & h1 {
+            font-size: 175%;
+        }
+    }
+
+    footer h2 {
+        font-size: 90%;
+        color: #555;
+        padding-bottom: .25em;
+    }
+
+    main section {
+        padding: 1em;
+        border-bottom: 1px solid #ddd;
+    }
+
+    footer {
+        background-color: #f0f0f0;
+        padding: 1em;
+        & p {
+            font-size: 90%;
+            color: #555;
+            line-height: 1.6;
+        }
+    }
+}
+
+/* --- unlayered: always wins over any layer --- */
+@media (max-width: 640px) {
+    h2 {
+        font-size: 120%;
+    }
+}
